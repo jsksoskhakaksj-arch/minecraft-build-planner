@@ -1,0 +1,427 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build List – ลิสต์วัสดุ Minecraft</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceaf2;--card:#fff;--tx:#23212c;--mu:#6d6a7c;--ac:#6a4fe0;--acx:#fff;--ok:#1f9d63;--bd:#d6d3e2;--in:#f5f4f9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181e;--card:#222430;--tx:#e9e7f2;--mu:#9b98ad;--ac:#9a82ff;--acx:#17181e;--ok:#4cc38a;--bd:#34364a;--in:#1b1c26}}
+:root[data-theme="dark"]{--bg:#17181e;--card:#222430;--tx:#e9e7f2;--mu:#9b98ad;--ac:#9a82ff;--acx:#17181e;--ok:#4cc38a;--bd:#34364a;--in:#1b1c26}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 "Prompt","Noto Sans Thai",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:0 0 12px;font-weight:600}
+input[type=text],input[type=number]{background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:10px 12px;font:inherit;width:100%}
+input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:14px}
+#pick{display:flex;flex-wrap:wrap;gap:6px;max-height:150px;overflow-y:auto;margin-top:10px}
+#pick button{display:flex;align-items:center;gap:6px;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+#pick button:hover{border-color:var(--ac)}
+i.sw{display:inline-block;width:14px;height:14px;border-radius:2px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.bar{height:10px;background:var(--in);border-radius:5px;overflow:hidden;margin:8px 0}
+.bar b{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.sum{display:flex;flex-wrap:wrap;gap:4px 18px;color:var(--mu);font-size:13px}
+.row{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center;padding:12px 0;border-top:1px solid var(--bd)}
+.row:first-child{border-top:0}
+.row input[type=checkbox]{width:22px;height:22px;accent-color:var(--ok)}
+.nm{font-weight:500}.nm small{display:block;color:var(--mu);font-weight:400}
+.row.dn .nm{text-decoration:line-through;opacity:.55}
+.ctl{grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mu)}
+.ctl input{width:78px;padding:6px 8px}
+.ctl .t{font-size:13px;color:var(--tx)}
+.ctl button,.tools button{background:transparent;color:var(--mu);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.ctl button:hover,.tools button:hover{color:var(--ac);border-color:var(--ac)}
+.how{grid-column:2;background:var(--in);border-left:3px solid var(--ac);border-radius:4px;padding:8px 12px;font-size:13px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.mu{color:var(--mu)}
+#tree>b{display:block;margin-top:6px}
+.pj{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pj select{flex:1 1 160px;min-width:0;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:10px 12px;font:inherit}.pj button{background:transparent;color:var(--mu);border:1px solid var(--bd);border-radius:6px;padding:9px 12px;font:inherit;font-size:13px;cursor:pointer}.pj button:hover:not(:disabled){color:var(--ac);border-color:var(--ac)}.pj button:disabled{opacity:.4;cursor:default}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.cbtn,.cf button{background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}.cf{background:var(--in);border:1px solid var(--bd);border-radius:8px;padding:12px}.cf>div{display:flex;flex-direction:column;gap:8px}.cf .r{display:flex;flex-direction:row;gap:8px}.cf label{flex:1;font-size:13px;color:var(--mu)}.cf select{width:100%;padding:8px;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:6px;margin-top:4px;font:inherit}.cf button.p{background:var(--ac);color:var(--acx);border-color:var(--ac);flex:1}.tabs button{background:transparent;color:var(--mu);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}.tabs button.on{background:var(--ac);color:var(--acx);border-color:var(--ac)}.pj select:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.tr{margin:4px 0 12px;padding-left:20px;font-size:13px}
+.pw{display:inline-flex;gap:2px;align-items:center}
+.ic{width:20px;height:20px;flex:none;object-fit:contain;image-rendering:pixelated}
+#agg summary{cursor:pointer;font-weight:600}
+#planOut{margin-top:8px;font-size:14px}
+#days{width:78px;margin:0 6px}
+#prof label{display:flex;align-items:center;gap:6px;font-size:13px}
+#prof input{width:18px;height:18px;accent-color:var(--ok)}
+#tools details{border-top:1px solid var(--bd);padding:4px 0;margin-top:8px}
+#tools summary{cursor:pointer;font-weight:500;padding:6px 0}
+#tools select{width:100%;padding:8px;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;margin-top:4px;font:inherit}
+#tools input[type=number]{margin-top:4px}
+.r2{display:flex;gap:8px;flex-wrap:wrap}
+.r2 label{flex:1 1 120px;font-size:13px;color:var(--mu)}
+.out{font-size:14px;margin-top:8px}
+#palBar i{display:block;min-width:2px}
+#pick .dc{padding:6px 8px;color:#e74c3c}
+#ioText{width:100%;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:8px;font:12px/1.4 monospace}
+</style>
+</head>
+<body>
+<main>
+<h1>Build List</h1>
+<div class="card pj"><select id="sel" aria-label="เลือกโปรเจกต์"></select><button id="new">+ สร้างโปรเจกต์ใหม่</button><button id="del">ลบโปรเจกต์</button></div>
+<div class="card">
+  <input type="text" id="name" aria-label="ชื่อโปรเจกต์" placeholder="ชื่อโปรเจกต์">
+  <div class="bar"><b id="pb"></b></div>
+  <div class="sum" id="sum"></div>
+  <div id="cap" class="mu" style="font-size:13px;margin-top:6px" role="status"></div>
+  <div id="pal" hidden style="margin-top:8px"><div id="palBar" role="img" aria-label="แถบสัดส่วนสีของวัสดุในโปรเจกต์" style="display:flex;height:14px;border-radius:7px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--bd)"></div><div id="palTxt" class="mu" style="font-size:12px;margin-top:4px"></div></div>
+</div>
+<div class="card">
+  <input type="text" id="q" aria-label="ค้นหาไอเท็ม" placeholder="ค้นหาไอเท็ม เช่น ดีพสเลต, glass">
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div id="pick"></div>
+  <div style="margin-top:10px;border-top:1px dashed var(--bd);padding-top:10px"><button id="btnCustom" class="cbtn">+ เพิ่มไอเท็มที่ไม่มีในลิสต์ (Custom Item)</button></div>
+  <div class="cf" id="customForm" hidden style="margin-top:10px"><b style="font-size:14px;display:block;margin-bottom:8px">เพิ่มไอเท็มใหม่ของคุณเอง</b><div>
+<input type="text" id="custEn" placeholder="ชื่ออังกฤษ (เช่น Pale Oak Log)" aria-label="ชื่ออังกฤษ">
+<input type="text" id="custTh" placeholder="ชื่อไทย (เช่น ท่อนไม้เพลโอ๊ก)" aria-label="ชื่อไทย">
+<input type="text" id="custIcon" placeholder="URL รูปภาพ (ไม่บังคับ) ขึ้นต้นด้วย https://" aria-label="URL รูปภาพ">
+<label style="font-size:13px;color:var(--mu)">หรือเลือกไฟล์รูปเล็ก ๆ (ระบบย่อเป็น 32×32)<input type="file" id="custFile" accept="image/*" style="display:block;margin-top:4px;font:inherit;font-size:12px;color:var(--mu)"></label>
+<div class="r"><label>Max Stack<select id="custStack"><option value="64">64 ชิ้น</option><option value="16">16 ชิ้น</option><option value="1">1 ชิ้น</option></select></label><label>หมวดหมู่<select id="custCat"><option value="building">บล็อกหลัก</option><option value="stairs_slabs">บันได/แผ่นครึ่งก้อน</option><option value="decor">ไฟและตกแต่ง</option><option value="utility">เรดสโตน/จิปาถะ</option></select></label></div>
+<div class="r"><button class="p" id="btnSaveCustom">บันทึกและเพิ่มลงลิสต์</button><button id="btnCancelCustom">ยกเลิก</button></div>
+<span id="custMsg" class="mu" role="status"></span></div></div>
+</div>
+<div class="card" id="prof"><b style="font-size:14px">ข้อจำกัดของฉัน</b> <span class="mu" style="font-size:13px">ติ๊กอันที่ยังทำไม่ได้ ระบบจะเสนอบล็อกทดแทนให้</span>
+  <div class="tools" style="margin-top:8px"><label><input type="checkbox" data-flag="nether">ยังเข้าเนเธอร์ไม่ได้</label><label><input type="checkbox" data-flag="iron">ยังไม่มีฟาร์มเหล็ก</label></div></div>
+<div class="card">
+  <div id="list"></div>
+  <div class="tools" style="margin-top:10px"><button id="copy">คัดลอกลิสต์</button><button id="hideDone" aria-pressed="false">ซ่อนรายการที่เก็บครบแล้ว</button><button id="clr">ลบรายการที่ติ๊กแล้ว</button><button id="exp">ส่งออก JSON</button><button id="imp">นำเข้า JSON (แทนที่ข้อมูลเดิม)</button><input type="file" id="impFile" accept=".json,application/json" hidden></div>
+  <div id="ioMsg" class="mu" role="status" style="font-size:13px;margin-top:6px"></div>
+  <div id="ioBox" hidden style="margin-top:8px"><textarea id="ioText" rows="5" aria-label="ข้อมูลโปรเจกต์ JSON"></textarea><div class="tools" style="margin-top:6px"><button id="ioApply">นำเข้าจากข้อความนี้</button><button id="ioClose">ปิด</button></div></div>
+</div>
+<div class="card" id="tree" hidden></div>
+<div class="card" id="plan" hidden><b>แผนขุดรายวัน</b> <label class="mu" style="font-size:13px;margin-left:8px">แบ่งเป็น<input type="number" id="days" min="1" max="365" aria-label="จำนวนวัน">วัน</label> <label class="mu" style="font-size:13px;margin-left:8px">ขุดได้ ≈<input type="number" id="rate" min="1" aria-label="ชิ้นต่อนาที" style="width:78px;margin:0 6px">ชิ้น/นาที</label><div id="planOut"></div></div>
+<div class="card" id="theme" hidden><b>เปลี่ยนธีมวัสดุ</b>
+  <div class="pj" style="margin-top:8px"><select id="themeSel" aria-label="เลือกธีม"><option value="dark">Dark Fantasy (ดีพสเลต/แบล็กสโตน)</option><option value="stone">หินคลาสสิก (หิน/ไม้โอ๊ก)</option></select><button id="themeGo">สร้างเป็นโปรเจกต์ใหม่</button></div>
+  <div id="themeOut" class="mu" style="font-size:13px;margin-top:6px" role="status"></div></div>
+<details class="card" id="agg" hidden><summary>รวมวัสดุทุกโปรเจกต์</summary><div id="aggOut"></div></details>
+<div class="card" id="tools"><b>เครื่องมือช่วยคำนวณ</b> <span class="mu" style="font-size:12px">ตัวเลขในเกมมาจากความจำของผม ตรวจกับ wiki ก่อนใช้จริง</span>
+<details><summary>ความทนทานเครื่องมือ</summary><div><div class="r2">
+<label>วัสดุพิคแอกซ์<select id="dMat"><option value="59">ไม้ (59)</option><option value="131">หิน (131)</option><option value="250">เหล็ก (250)</option><option value="32">ทอง (32)</option><option value="1561" selected>เพชร (1561)</option><option value="2031">เนเธอไรต์ (2031)</option></select></label>
+<label>Unbreaking<select id="dUnb"><option value="0">ไม่มี</option><option value="1">I</option><option value="2">II</option><option value="3" selected>III</option></select></label>
+<label>จำนวนบล็อกที่จะขุด<input type="number" id="dN" min="0"></label></div>
+<div class="tools" style="margin-top:6px"><button id="dFill">ใช้ยอดของดิบรวมของโปรเจกต์</button></div><div id="dOut" class="out"></div></div></details>
+<details><summary>พิกัดโอเวอร์เวิลด์ ⇄ เนเธอร์</summary><div><div class="r2">
+<label>ทิศทาง<select id="nDir"><option value="o2n">โอเวอร์เวิลด์ → เนเธอร์ (หาร 8)</option><option value="n2o">เนเธอร์ → โอเวอร์เวิลด์ (คูณ 8)</option></select></label>
+<label>X<input type="number" id="nX"></label><label>Z<input type="number" id="nZ"></label></div><div id="nOut" class="out"></div></div></details>
+<details><summary>ประมาณมรกตจากการเทรดกับชาวบ้าน</summary><div><div id="eOut" class="out"></div></div></details>
+<details><summary>เครื่องคิดเลขเรดสโตน</summary><div><div class="r2" id="rcIn"></div>
+<div class="tools" style="margin-top:6px"><button id="rcAdd">เพิ่มของดิบที่มีในรายการลงโปรเจกต์</button></div><div id="rcOut" class="out"></div></div></details>
+<details><summary>วางแผน Beacon</summary><div><div class="r2">
+<label>เลเวล<select id="bLv"><option value="1">1 (ฐาน 9 บล็อก)</option><option value="2">2 (ฐาน 34 บล็อก)</option><option value="3">3 (ฐาน 83 บล็อก)</option><option value="4" selected>4 (ฐาน 164 บล็อก)</option></select></label>
+<label>วัสดุฐาน<select id="bMat"><option value="iron">เหล็ก</option><option value="gold">ทอง</option><option value="diamond">เพชร</option><option value="emerald">มรกต</option></select></label></div>
+<div class="r2" style="margin-top:8px"><label>กว้างพื้นที่สร้าง (บล็อก)<input type="number" id="bW" min="0"></label><label>ยาวพื้นที่สร้าง (บล็อก)<input type="number" id="bL" min="0"></label></div><div id="bOut" class="out"></div></div></details>
+<details><summary>จัดของลง Shulker Box</summary><div><div id="pkOut" class="out"></div></div></details>
+</div>
+<p class="mu" style="font-size:12px">ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้ ซิงก์ข้ามเครื่องยังไม่เปิดใช้</p>
+</main>
+<script>
+const DB=[
+["cobbled_deepslate","Cobbled Deepslate","คอบเบิลดีพสเลต","#4a4b55",64,"ขุดชั้นหินที่ Y ต่ำกว่า 0 ด้วยพิคแอกซ์ (ขุดแล้วได้คอบเบิลดีพสเลต)"],
+["deepslate","Deepslate","ดีพสเลต","#3d3e48",64,"ขุดด้วย Silk Touch หรือเผาคอบเบิลดีพสเลตในเตา"],
+["polished_deepslate","Polished Deepslate","ดีพสเลตขัดเงา","#45464f",64,"คราฟต์: คอบเบิลดีพสเลต 4 ก้อน ได้ 4 ก้อน"],
+["deepslate_bricks","Deepslate Bricks","อิฐดีพสเลต","#3b3c45",64,"คราฟต์: ดีพสเลตขัดเงา 4 ก้อน ได้ 4 ก้อน"],
+["deepslate_tiles","Deepslate Tiles","กระเบื้องดีพสเลต","#35363e",64,"คราฟต์: อิฐดีพสเลต 4 ก้อน ได้ 4 ก้อน"],
+["blackstone","Blackstone","แบล็กสโตน","#2b2830",64,"ขุดในเนเธอร์ (Basalt Deltas / Bastion)"],
+["pol_bs_bricks","Polished Blackstone Bricks","อิฐแบล็กสโตนขัดเงา","#2f2c35",64,"คราฟต์จากแบล็กสโตนขัดเงา หรือเก็บจาก Bastion"],
+["stone","Stone","หิน","#7d7d7d",64,"เผาคอบเบิลสโตนในเตา หรือขุดด้วย Silk Touch"],
+["cobblestone","Cobblestone","คอบเบิลสโตน","#6f6f6f",64,"ขุดหินปกติ หรือทำเครื่องปั่นคอบเบิลจากลาวากับน้ำ"],
+["stone_bricks","Stone Bricks","อิฐหิน","#777777",64,"คราฟต์: หิน 4 ก้อน ได้ 4 ก้อน"],
+["mossy_stone_bricks","Mossy Stone Bricks","อิฐหินมอส","#667a5c",64,"คราฟต์: อิฐหิน + เถาวัลย์ หรือ มอสบล็อก"],
+["cracked_stone_bricks","Cracked Stone Bricks","อิฐหินร้าว","#6e6e6e",64,"เผาอิฐหินในเตา"],
+["andesite","Andesite","แอนดีไซต์","#8a8a8a",64,"ขุดตามถ้ำ หรือคราฟต์: ไดโอไรต์ + คอบเบิลสโตน"],
+["oak_log","Oak Log","ท่อนไม้โอ๊ก","#6b5333",64,"ตัดต้นโอ๊กด้วยขวาน"],
+["dark_oak_planks","Dark Oak Planks","แผ่นไม้ดาร์กโอ๊ก","#3f2a14",64,"คราฟต์จากท่อนไม้ดาร์กโอ๊ก (1 ท่อน ได้ 4 แผ่น)"],
+["spruce_planks","Spruce Planks","แผ่นไม้สปรูซ","#6a4b2a",64,"คราฟต์จากท่อนไม้สปรูซ (1 ท่อน ได้ 4 แผ่น)"],
+["glass","Glass","กระจก","#bfe4ee",64,"เผาทรายในเตา"],
+["sand","Sand","ทราย","#dccf94",64,"ขุดตามชายหาดหรือทะเลทราย ใช้พลั่ว"],
+["iron_ingot","Iron Ingot","เหล็กแท่ง","#d8d8d8",64,"เผาเหล็กดิบ หรือสร้าง Iron Farm ถ้าต้องใช้เยอะ"],
+["coal","Coal","ถ่านหิน","#2a2a2a",64,"ขุดแร่ถ่านหิน เจอได้ทั่วไปในถ้ำ"],
+["redstone","Redstone Dust","ผงเรดสโตน","#b3121b",64,"ขุดแร่เรดสโตนในชั้นลึก (Y ต่ำ)"],
+["quartz","Nether Quartz","ควอตซ์","#e8e3d9",64,"ขุดแร่ควอตซ์ในเนเธอร์"],
+["glowstone","Glowstone","โกลว์สโตน","#d9a441",64,"ขุดในเนเธอร์ ใช้ Silk Touch ได้ทั้งก้อน หรือทุบเอาฝุ่น (2-4 ชิ้นต่อก้อน) แล้วคราฟต์ 4 ฝุ่น = 1 ก้อน"],
+["lantern","Lantern","โคมไฟ","#e0a244",64,"คราฟต์: ก้อนเหล็กเล็ก 8 + ไต้ 1"],
+["chain","Chain","โซ่","#4b5160",64,"คราฟต์: เหล็กแท่ง 1 + ก้อนเหล็กเล็ก 2"],
+["obsidian","Obsidian","ออบซิเดียน","#150f22",64,"เทน้ำใส่ลาวาบ่อ แล้วขุดด้วยพิคแอกซ์เพชร"],
+["crying_obsidian","Crying Obsidian","ออบซิเดียนร้องไห้","#2a0f57",64,"เก็บจากโครงสร้างในเนเธอร์ เช่น Ruined Portal"],
+["amethyst","Amethyst Block","บล็อกอเมทิสต์","#8a6bc8",64,"คราฟต์: เศษอเมทิสต์ 4 ชิ้น หาได้จาก Geode"],
+["sea_lantern","Sea Lantern","ซีแลนเทิร์น","#a7d6cf",64,"ได้จาก Ocean Monument หรือคราฟต์จากเศษปริซึมารีน"],
+["shulker_box","Shulker Box","กล่องชัลเกอร์","#8e648f",1,"คราฟต์: เปลือกชัลเกอร์ 2 + หีบ 1 (ได้เปลือกจากม็อบชัลเกอร์ในเอนด์ซิตี้)"]
+];
+const $=s=>document.querySelector(s);
+let M={cur:'p1',projects:[{id:'p1',name:'โปรเจกต์ของฉัน',items:[]}]};
+try{const r=JSON.parse(localStorage.getItem('mcl')||'null');if(r&&r.projects&&r.projects.length)M=r;else if(r&&r.items)M={cur:'p1',projects:[{id:'p1',name:r.name||'โปรเจกต์ของฉัน',items:r.items}]}}catch(e){}
+let S=M.projects.find(p=>p.id===M.cur)||M.projects[0];M.cur=S.id;
+const save=()=>{try{localStorage.setItem('mcl',JSON.stringify(M))}catch(e){}};
+const info=id=>DB.find(d=>d[0]===id);
+const qty=it=>it.stacks*info(it.id)[4]+it.extra;
+const fmt=(n,st)=>st==1?n+" ชิ้น":(Math.floor(n/st)+" สแต็ก"+(n%st?" + "+n%st:""));
+
+const R={polished_deepslate:['cobbled_deepslate',1,0],deepslate:['cobbled_deepslate',1,1],deepslate_bricks:['polished_deepslate',1,0],deepslate_tiles:['deepslate_bricks',1,0],stone:['cobblestone',1,1],stone_bricks:['stone',1,0],cracked_stone_bricks:['stone_bricks',1,1],glass:['sand',1,1],dark_oak_planks:['ท่อนไม้ดาร์กโอ๊ก',0.25,0],spruce_planks:['ท่อนไม้สปรูซ',0.25,0]};
+const nm=id=>info(id)?info(id)[1]:id;
+function go(id,n,a){const r=R[id];if(!r){a.base[id]=(a.base[id]||0)+n;return}const s=a.steps[id]||(a.steps[id]={n:0,sm:r[2]});s.n+=n;if(r[2])a.smelt+=n;go(r[0],Math.ceil(n*r[1]-1e-9),a);(X[id]||[]).forEach(([k,q])=>go(k,Math.ceil(n*q-1e-9),a))}
+const dur=s=>{const m=Math.ceil(s/60);return m>=60?Math.floor(m/60)+' ชม. '+(m%60)+' นาที':m+' นาที'};
+function renderTree(){const el=$('#tree');if(!S.items.length){el.hidden=true;return}el.hidden=false;const a={base:{},steps:{},smelt:0};S.items.forEach(it=>go(it.id,qty(it),a));const li=t=>`<li>${t}</li>`;let h='<b>ย้อนต้นทาง: ต้องไปหาอะไรบ้าง</b><ul class=tr>'+Object.entries(a.base).map(([id,n])=>li(`${nm(id)} <b>${fmt(n,info(id)?info(id)[4]:64)}</b> (${n.toLocaleString()} ชิ้น)`)).join('')+'</ul>';const st=Object.entries(a.steps);if(st.length)h+='<b>ขั้นตอนผลิต</b><ul class=tr>'+st.map(([id,s])=>li(`${s.sm?'เผา':'คราฟต์'} ${nm(id)} ${s.n.toLocaleString()} ชิ้น`)).join('')+'</ul>';if(a.smelt)h+=`<b>เชื้อเพลิง (เผา ${a.smelt.toLocaleString()} ชิ้น)</b><ul class=tr><li>ถ่านหิน ${Math.ceil(a.smelt/8).toLocaleString()} ก้อน</li><li>หรือ Kelp Block ${Math.ceil(a.smelt/20).toLocaleString()} ก้อน</li><li>เวลา: เตา 1 ตัว ${dur(a.smelt*10)} / เตา 8 ตัว ${dur(a.smelt*10/8)}</li></ul>`;el.innerHTML=h}
+const CAT={decor:'lantern chain glowstone sea_lantern amethyst'.split(' '),utility:'iron_ingot coal redstone quartz shulker_box'.split(' ')};
+DB.forEach(d=>{d[6]=CAT.decor.includes(d[0])?'decor':CAT.utility.includes(d[0])?'utility':'building'});
+const add=(id,en,th,c,how,cat,st=64)=>DB.push([id,en,th,c,st,how,cat]);
+add('diorite','Diorite','ไดโอไรต์','#bfbfbf','ขุดตามถ้ำ หรือคราฟต์: คอบเบิลสโตน 2 + ควอตซ์ 2','building');
+add('granite','Granite','แกรนิต','#9a6a57','ขุดตามถ้ำ หรือคราฟต์: ไดโอไรต์ + ควอตซ์','building');
+add('oak_planks','Oak Planks','แผ่นไม้โอ๊ก','#a88a53','คราฟต์จากท่อนไม้โอ๊ก (1 ท่อน ได้ 4 แผ่น)','building');
+add('spruce_log','Spruce Log','ท่อนไม้สปรูซ','#3b2814','ตัดต้นสปรูซด้วยขวาน','building');
+add('dark_oak_log','Dark Oak Log','ท่อนไม้ดาร์กโอ๊ก','#2c1d0d','ตัดต้นดาร์กโอ๊กด้วยขวาน','building');
+add('tinted_glass','Tinted Glass','กระจกทึบแสง','#2c2236','คราฟต์: กระจก 1 + เศษอเมทิสต์ 4','building');
+add('soul_lantern','Soul Lantern','โคมไฟวิญญาณ','#41b3a3','คราฟต์: ก้อนเหล็กเล็ก 8 + คบไฟวิญญาณ 1','decor');
+add('oak_fence','Oak Fence','รั้วไม้โอ๊ก','#a88a53','คราฟต์: แผ่นไม้โอ๊ก 4 + แท่งไม้ 2 ได้ 3 รั้ว','decor');
+add('spruce_fence','Spruce Fence','รั้วไม้สปรูซ','#6a4b2a','คราฟต์: แผ่นไม้สปรูซ 4 + แท่งไม้ 2 ได้ 3 รั้ว','decor');
+add('iron_bars','Iron Bars','ลูกกรงเหล็ก','#8c8c8c','คราฟต์: เหล็กแท่ง 6 อัน ได้ 16 ลูกกรง','decor');
+add('ender_pearl','Ender Pearl','เอนเดอร์เพิร์ล','#255d56','ดรอปจาก Enderman หรือแลกกับ Piglin','utility',16);
+add('glass_pane','Glass Pane','กระจกแผ่น','#bfe4ee','คราฟต์: บล็อกกระจก 6 บล็อก ได้ 16 แผ่น','stairs_slabs');
+const K={s:['_stairs',' Stairs','บันได',1.5,6,'4 บันได'],l:['_slab',' Slab','แผ่น',.5,3,'6 แผ่น'],w:['_wall',' Wall','กำแพง',1,6,'6 กำแพง']};
+[['cobbled_deepslate','cobbled_deepslate','Cobbled Deepslate','คอบเบิลดีพสเลต','slw'],['polished_deepslate','polished_deepslate','Polished Deepslate','ดีพสเลตขัดเงา','sl'],['deepslate_bricks','deepslate_brick','Deepslate Brick','อิฐดีพสเลต','slw'],['deepslate_tiles','deepslate_tile','Deepslate Tile','กระเบื้องดีพสเลต','sl'],['stone_bricks','stone_brick','Stone Brick','อิฐหิน','sl'],['oak_planks','oak','Oak','ไม้โอ๊ก','s'],['spruce_planks','spruce','Spruce','ไม้สปรูซ','s'],['dark_oak_planks','dark_oak','Dark Oak','ไม้ดาร์กโอ๊ก','s']].forEach(([src,p,en,th,ks])=>[...ks].forEach(k=>{const q=K[k],id=p+q[0];add(id,en+q[1],q[2]+th,info(src)[3],'คราฟต์: '+info(src)[2]+' '+q[4]+' ก้อน ได้ '+q[5],'stairs_slabs');R[id]=[src,q[3],0]}));
+Object.assign(R,{oak_planks:['oak_log',.25,0],spruce_planks:['spruce_log',.25,0],dark_oak_planks:['dark_oak_log',.25,0],oak_fence:['oak_planks',5/3,0],spruce_fence:['spruce_planks',5/3,0],glass_pane:['glass',.375,0],iron_bars:['iron_ingot',.375,0]});
+const cl=s=>String(s).replace(/[<>&"'`]/g,'');
+const safeIcon=u=>typeof u==='string'&&/^(https?:\/\/|data:image\/(png|jpeg|gif|webp);base64,)[^"'<>\s]+$/.test(u)?u:'';
+const ICON_BASE='https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.1/';
+const IDMAP={pol_bs_bricks:'polished_blackstone_bricks',amethyst:'amethyst_block'};
+const mcId=d=>d[0].startsWith('custom_')?'':(IDMAP[d[0]]||d[0]);
+const iconOf=d=>d[0].startsWith('custom_')?safeIcon(d[7]):ICON_BASE+'items/'+mcId(d)+'.png';
+const ico=d=>{const u=iconOf(d);return u?`<img class="ic" src="${u}" alt="" loading="lazy" referrerpolicy="no-referrer" data-c="${d[3]}" data-id="${mcId(d)}" data-b="${BT(mcId(d))}">`:`<i class="sw" style="background:${d[3]}"></i>`};
+document.addEventListener('error',e=>{const t=e.target;if(t&&t.classList&&t.classList.contains('ic')){const k=+(t.dataset.try||0);
+if(k===0&&t.dataset.id){t.dataset.try=1;t.src=ICON_BASE+'blocks/'+t.dataset.id+'.png';return}
+if(k<=1&&t.dataset.b&&t.dataset.b!==t.dataset.id){t.dataset.try=2;t.src=ICON_BASE+'blocks/'+t.dataset.b+'.png';return}const s=document.createElement('i');s.className='sw';s.style.background=t.dataset.c;t.replaceWith(s)}},true);
+const baseOf=m=>{const a={base:{},steps:{},smelt:0};Object.entries(m).forEach(([id,n])=>go(id,n,a));return a};
+const stk=id=>info(id)?info(id)[4]:64;
+function renderExtra(){
+const pc=$('#plan'),ag=$('#agg');renderTools();
+document.querySelectorAll('[data-flag]').forEach(c=>{c.checked=!!(M.flags&&M.flags[c.dataset.flag])});
+$('#theme').hidden=!S.items.length;
+if(S.items.length){const p=themePlan($('#themeSel').value);$('#themeOut').textContent=`จะเปลี่ยน ${p.ch} รายการ คงเดิม ${p.keep} รายการ (ไม่มีคู่ในธีม) โปรเจกต์เดิมไม่ถูกแก้`}
+if(!S.items.length){pc.hidden=true}else{
+pc.hidden=false;
+const days=Math.min(365,Math.max(1,parseInt(S.days)||7));$('#days').value=days;$('#rate').value=Math.max(1,parseFloat(S.rate)||40);
+const m={};S.items.forEach(it=>{m[it.id]=(m[it.id]||0)+qty(it)});
+const a=baseOf(m),en=Object.entries(a.base),tot=en.reduce((s,[id,n])=>s+Math.ceil(n/stk(id)),0);
+$('#planOut').innerHTML=`<div>ของดิบรวม ${tot.toLocaleString()} สแต็ก แบ่ง ${days} วัน ≈ <b>วันละ ${Math.ceil(tot/days).toLocaleString()} สแต็ก</b></div><ul class="tr">`+en.map(([id,n])=>`<li>${nm(id)}: วันละ <b>${fmt(Math.ceil(n/days),stk(id))}</b> (รวม ${n.toLocaleString()} ชิ้น)</li>`).join('')+'</ul>'+timeHtml(en,days)}
+if(M.projects.length<2){ag.hidden=true;return}
+ag.hidden=false;
+const m2={};M.projects.forEach(p=>p.items.forEach(it=>{if(info(it.id))m2[it.id]=(m2[it.id]||0)+qty(it)}));
+const a2=baseOf(m2),en2=Object.entries(a2.base);
+$('#aggOut').innerHTML=`<div class="mu" style="font-size:13px;margin:6px 0">รวม ${M.projects.length} โปรเจกต์ (นับทุกรายการ รวมที่ติ๊กแล้ว)</div>`+(en2.length?'<ul class="tr">'+en2.map(([id,n])=>`<li>${nm(id)} <b>${fmt(n,stk(id))}</b> (${n.toLocaleString()} ชิ้น)</li>`).join('')+'</ul>':'<div class="mu">ยังไม่มีไอเท็มในโปรเจกต์ใด</div>')+(a2.smelt?`<div>ต้องเผา ${a2.smelt.toLocaleString()} ชิ้น ใช้ถ่านหิน ${Math.ceil(a2.smelt/8).toLocaleString()} ก้อน</div>`:'')}
+$('#days').addEventListener('change',e=>{S.days=Math.min(365,Math.max(1,parseInt(e.target.value)||7));render()});
+const ALT={
+blackstone:{need:'nether',to:['deepslate','cobbled_deepslate']},
+pol_bs_bricks:{need:'nether',to:['deepslate_bricks','deepslate_tiles']},
+crying_obsidian:{need:'nether',to:['obsidian']},
+iron_bars:{need:'iron',to:['glass_pane']},
+tinted_glass:{need:'',to:['glass']},
+mossy_stone_bricks:{need:'',to:['stone_bricks']},
+cracked_stone_bricks:{need:'',to:['stone_bricks']},
+diorite:{need:'',to:['andesite','stone']},
+granite:{need:'',to:['andesite']},
+andesite:{need:'',to:['stone','deepslate']}
+};
+const alts=it=>{const a=ALT[it.id];return a?a.to.filter(t=>info(t)):[]};
+const altBtn=(it,i)=>alts(it).length?`<button data-alt="${i}">ทดแทน</button>`:'';
+const altPanel=(it,i)=>{const a=ALT[it.id],l=alts(it);if(!l.length)return '';const hard=a.need&&M.flags&&M.flags[a.need];if(!it.altOpen&&!hard)return '';
+const why=hard?(a.need==='nether'?'คุณติ๊กว่ายังเข้าเนเธอร์ไม่ได้ แต่บล็อกนี้ต้องหาจากเนเธอร์':'คุณติ๊กว่ายังไม่มีฟาร์มเหล็ก แต่ไอเท็มนี้กินเหล็กเยอะ'):'ตัวเลือกทดแทนที่โทนสีใกล้เคียงหรือหาง่ายกว่า';
+return `<div class="how"><div style="margin-bottom:6px">${why}</div><div class="tools">${l.map(t=>`<button data-use="${i}" data-to="${t}"><i class="sw" style="background:${info(t)[3]}"></i> ใช้ ${info(t)[1]} แทน</button>`).join('')}</div></div>`};
+function swapItem(i,to){const it=S.items[i];if(!it||!info(to))return;const pcs=qty(it),st=stk(to),ex=S.items.findIndex((x,j)=>j!==i&&x.id===to);
+if(ex>-1){const t=S.items[ex],sum=qty(t)+pcs;t.stacks=Math.floor(sum/st);t.extra=sum%st;S.items.splice(i,1)}
+else{it.id=to;it.stacks=Math.floor(pcs/st);it.extra=pcs%st;it.altOpen=false;it.open=false}}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-alt],[data-use]');if(!t)return;
+if(t.dataset.alt!==undefined){const it=S.items[+t.dataset.alt];if(it){it.altOpen=!it.altOpen;render()}return}
+swapItem(+t.dataset.use,t.dataset.to);render()});
+document.addEventListener('change',e=>{const f=e.target.dataset&&e.target.dataset.flag;if(f){M.flags=M.flags||{};M.flags[f]=e.target.checked;render()}});
+const THEMES={
+dark:{name:'Dark Fantasy (ดีพสเลต/แบล็กสโตน)',map:{stone_bricks:'deepslate_bricks',stone_brick_stairs:'deepslate_brick_stairs',stone_brick_slab:'deepslate_brick_slab',stone:'deepslate',cobblestone:'cobbled_deepslate',andesite:'deepslate',diorite:'polished_deepslate',granite:'blackstone',oak_log:'dark_oak_log',oak_planks:'dark_oak_planks',oak_stairs:'dark_oak_stairs',spruce_log:'dark_oak_log',spruce_planks:'dark_oak_planks',spruce_stairs:'dark_oak_stairs',glass:'tinted_glass',lantern:'soul_lantern'}},
+stone:{name:'หินคลาสสิก (หิน/ไม้โอ๊ก)',map:{deepslate_bricks:'stone_bricks',deepslate_brick_stairs:'stone_brick_stairs',deepslate_brick_slab:'stone_brick_slab',deepslate_tiles:'stone_bricks',deepslate_tile_stairs:'stone_brick_stairs',deepslate_tile_slab:'stone_brick_slab',polished_deepslate:'stone',deepslate:'stone',cobbled_deepslate:'cobblestone',blackstone:'andesite',pol_bs_bricks:'stone_bricks',dark_oak_log:'oak_log',dark_oak_planks:'oak_planks',dark_oak_stairs:'oak_stairs',tinted_glass:'glass',soul_lantern:'lantern'}}
+};
+function themePlan(k){const m=THEMES[k].map;let ch=0,keep=0;S.items.forEach(it=>{if(m[it.id]&&info(m[it.id]))ch++;else keep++});return{ch,keep}}
+function applyTheme(k){const m=THEMES[k].map,out=[];S.items.forEach(it=>{const to=m[it.id]&&info(m[it.id])?m[it.id]:it.id,pcs=qty(it),e=out.find(x=>x.id===to);if(e)e.pcs+=pcs;else out.push({id:to,pcs})});
+const P={id:'p'+Date.now().toString(36),name:S.name+' ('+THEMES[k].name.split(' (')[0]+')',days:S.days,items:out.map(x=>({id:x.id,stacks:Math.floor(x.pcs/stk(x.id)),extra:x.pcs%stk(x.id),done:false}))};
+M.projects.push(P);S=P;M.cur=P.id;$('#name').value=S.name;render();renderProj()}
+$('#themeSel').addEventListener('change',renderExtra);
+$('#themeGo').addEventListener('click',()=>{if(S.items.length)applyTheme($('#themeSel').value)});
+const YH={coal:'ช่วง Y 0 ถึง 320 พบเยอะสุดแถว Y=96',iron_ingot:'แร่เหล็กพบเยอะสุดแถว Y=16 (อีกจุดแถว Y=232 บนภูเขา) แล้วนำมาเผา',redstone:'พบเยอะสุดใกล้ Y=-59 (ชั้นลึกสุดของโลก)',cobbled_deepslate:'ชั้นดีพสเลตอยู่ต่ำกว่า Y=0 (ค่อย ๆ เปลี่ยนจากหินช่วง Y 0 ถึง 8)',deepslate:'ชั้นดีพสเลตอยู่ต่ำกว่า Y=0',amethyst:'หา Geode แถว Y -58 ถึง 30',quartz:'ในเนเธอร์ เจอได้ทั่วไปช่วง Y ราว 10 ถึง 117'};
+const yHint=id=>YH[id]?`<div style="margin-top:4px"><b>Y แนะนำ:</b> ${YH[id]} <span class="mu">(Java 1.18 ขึ้นไป จากความจำ ตรวจกับ wiki ก่อนใช้)</span></div>`:'';
+const num=sel=>Math.max(0,parseFloat($(sel).value)||0);
+const RC=[
+['torch','Redstone Torch',{redstone:1,stick:1}],
+['repeater','Repeater',{stone:3,redstone:3,stick:2}],
+['comparator','Comparator',{stone:3,redstone:3,stick:3,quartz:1}],
+['observer','Observer',{cobblestone:6,redstone:2,quartz:1}],
+['piston','Piston',{planks:3,cobblestone:4,iron_ingot:1,redstone:1}],
+['sticky','Sticky Piston',{planks:3,cobblestone:4,iron_ingot:1,redstone:1,slimeball:1}],
+['hopper','Hopper',{iron_ingot:5,planks:8}],
+['dropper','Dropper',{cobblestone:7,redstone:1}],
+['dispenser','Dispenser',{cobblestone:7,redstone:1,stick:3,string:3}]
+];
+$('#rcIn').innerHTML=RC.map(([k,n])=>`<label>${n}<input type="number" min="0" data-rc="${k}"></label>`).join('');
+const VT=[
+{id:'stone_bricks',per:4,e:1,pr:'ช่างหิน (Mason)'},
+{id:'glass_pane',per:11,e:1,pr:'นักทำแผนที่ (Cartographer)'},
+{id:'lantern',per:1,e:1,pr:'บรรณารักษ์ (Librarian)'},
+{id:'redstone',per:2,e:1,pr:'นักบวช (Cleric)'},
+{id:'ender_pearl',per:1,e:5,pr:'นักบวช (Cleric)'}
+];
+const COLORS=['ขาว','ส้ม','ม่วงแดง','ฟ้าอ่อน','เหลือง','เขียวมะนาว','ชมพู','เทา','เทาอ่อน','ฟ้าเขียว','ม่วง','น้ำเงิน','น้ำตาล','เขียว','แดง','ดำ'];
+function addPcs(id,pcs){if(!info(id)||pcs<=0)return;const st=stk(id),it=S.items.find(x=>x.id===id);if(it){const t=qty(it)+pcs;it.stacks=Math.floor(t/st);it.extra=t%st}else S.items.push({id,stacks:Math.floor(pcs/st),extra:pcs%st,done:false})}
+function rcTotals(){const t={};RC.forEach(([k,,r])=>{const c=Math.floor(num('[data-rc="'+k+'"]'));if(c>0)Object.entries(r).forEach(([m,q])=>{t[m]=(t[m]||0)+q*c})});if(t.stick){t.planks=(t.planks||0)+Math.ceil(t.stick/4)*2;delete t.stick}return t}
+function renderTools(){
+const n=Math.floor(num('#dN')),per=(+$('#dMat').value)*((+$('#dUnb').value)+1);
+$('#dOut').textContent=n?`ต้องใช้ ≈ ${Math.ceil(n/per).toLocaleString()} เล่ม (เฉลี่ย ${per.toLocaleString()} บล็อกต่อเล่ม ค่าจริงสุ่ม ควรเผื่อเพิ่ม 1 เล่ม ยังไม่รวม Mending)`:'กรอกจำนวนบล็อกที่จะขุด';
+const dir=$('#nDir').value,xs=$('#nX').value,zs=$('#nZ').value,x=parseFloat(xs),z=parseFloat(zs);
+$('#nOut').textContent=(xs===''||zs===''||isNaN(x)||isNaN(z))?'กรอกพิกัด X และ Z (ค่า Y ใช้เท่าเดิม ไม่ถูกคูณหรือหาร)':dir==='o2n'?`โอเวอร์เวิลด์ (${Math.floor(x)}, ${Math.floor(z)}) → เนเธอร์ (${Math.floor(x/8)}, ${Math.floor(z/8)}) ถ้าไม่มีประตูใกล้จุดนี้ เกมจะสร้างให้ใหม่`:`เนเธอร์ (${Math.floor(x)}, ${Math.floor(z)}) → โอเวอร์เวิลด์ (${Math.floor(x)*8}, ${Math.floor(z)*8})`;
+let eh='',et=0;
+VT.forEach(v=>{const it=S.items.find(i=>i.id===v.id);if(!it)return;const q=qty(it),em=Math.ceil(q/v.per)*v.e;et+=em;eh+=`<li>${nm(v.id)} ${q.toLocaleString()} ชิ้น ≈ <b>${em.toLocaleString()}</b> มรกต (${v.pr}: ${v.e} มรกต ต่อ ${v.per} ชิ้น)</li>`});
+$('#eOut').innerHTML=eh?`<ul class="tr">${eh}</ul><div>รวม ≈ <b>${et.toLocaleString()}</b> มรกต (${fmt(et,64)})</div><div class="mu" style="font-size:12px">ราคาจริงเปลี่ยนตามส่วนลด ความต้องการ และเวอร์ชัน ชาวบ้านต้องเลเวลถึงขั้นที่ปลดล็อกดีลนั้น</div>`:'โปรเจกต์นี้ยังไม่มีไอเท็มที่ผมมีดีลเทรดให้ (มี: '+VT.map(v=>nm(v.id)).join(', ')+')';
+const t=rcTotals(),order=['stone','cobblestone','redstone','quartz','iron_ingot','planks','slimeball','string'],lab={stone:'Stone (เผาจากคอบเบิลสโตน)',cobblestone:'Cobblestone',redstone:'Redstone Dust',quartz:'Nether Quartz',iron_ingot:'Iron Ingot',planks:'แผ่นไม้ชนิดใดก็ได้',slimeball:'Slimeball',string:'String'};
+const rows=order.filter(k=>t[k]).map(k=>`<li>${lab[k]} <b>${info(k)?fmt(t[k],stk(k)):t[k].toLocaleString()+' ชิ้น'}</b> (${t[k].toLocaleString()} ชิ้น)</li>`).join('');
+$('#rcOut').innerHTML=rows?`<ul class="tr">${rows}</ul><div class="mu" style="font-size:12px">แท่งไม้นับรวมเป็นแผ่นไม้แล้ว ปุ่มด้านบนเพิ่มเฉพาะของที่มีในรายการหน้านี้ (Stone, Cobblestone, Redstone, Quartz, Iron Ingot)</div>`:'กรอกจำนวนอุปกรณ์ที่ต้องใช้';
+const lv=+$('#bLv').value,W=Math.floor(num('#bW')),Ln=Math.floor(num('#bL')),base=[9,34,83,164][lv-1],rad=[20,30,40,50][lv-1],side=2*rad+1,BM={iron:'เหล็กแท่ง',gold:'ทองแท่ง',diamond:'เพชร',emerald:'มรกต'};
+if(!W||!Ln){$('#bOut').textContent='กรอกความกว้างและความยาวของพื้นที่สร้าง'}else{const bx=Math.ceil(W/side),bz=Math.ceil(Ln/side),nb=bx*bz,blocks=base*nb,ing=blocks*9;
+$('#bOut').innerHTML=`<ul class="tr"><li>แต่ละตัวครอบคลุมด้านละ ${side} บล็อก (รัศมี ${rad})</li><li>ต้องตั้ง <b>${nb}</b> ตัว (${bx}×${bz})</li><li>พีระมิดตัวละ ${base} บล็อก รวม ${blocks.toLocaleString()} บล็อก = ${BM[$('#bMat').value]} <b>${ing.toLocaleString()}</b> ชิ้น (${fmt(ing,64)})</li><li>ตัว Beacon เอง: Nether Star ${nb} ดวง, กระจก ${nb*5}, ออบซิเดียน ${nb*3}</li></ul>`+(lv<4?'<div class="mu" style="font-size:12px">Haste II / Speed II ต้องเลเวล 4</div>':'')+'<div class="mu" style="font-size:12px">ยังไม่คำนวณกรณีพีระมิดตัวข้างกันแชร์ฐานกัน</div>'}
+const bxs=[[]];let free=27;const sk=[];
+S.items.forEach(it=>{const d=info(it.id),st=d[4],q=qty(it);if(st===1){sk.push(d[1]);return}
+let full=Math.floor(q/st);const part=q%st;
+while(full>0){if(!free){bxs.push([]);free=27}const k=Math.min(full,free);bxs[bxs.length-1].push(`${d[1]} ${k} สแต็ก`);full-=k;free-=k}
+if(part>0){if(!free){bxs.push([]);free=27}bxs[bxs.length-1].push(`${d[1]} ${part} ชิ้น (1 ช่อง)`);free--}});
+const used=bxs.filter(b=>b.length);
+$('#pkOut').innerHTML=(S.items.length?(used.length?`<div>ต้องใช้ ${used.length} กล่อง (ช่องว่างในกล่องสุดท้าย ${free}) สีเรียงตามลำดับให้จำง่าย</div>`+used.map((b,i)=>`<div style="margin-top:6px"><b>กล่อง ${i+1} · สี${COLORS[i%16]}</b>${i>=16?' (สีซ้ำกับกล่องก่อนหน้า)':''}<ul class="tr">${b.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join(''):'ไม่มีของที่ใส่กล่องได้'):'ยังไม่มีไอเท็มในโปรเจกต์')+(sk.length?`<div class="mu" style="font-size:12px">ข้ามไป: ${sk.join(', ')} (ใส่ Shulker Box ซ้อนกันไม่ได้)</div>`:'')}
+$('#tools').addEventListener('input',renderTools);
+$('#tools').addEventListener('change',renderTools);
+$('#tools').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+if(t.id==='dFill'){const m={};S.items.forEach(it=>{m[it.id]=(m[it.id]||0)+qty(it)});$('#dN').value=Object.values(baseOf(m).base).reduce((s,n)=>s+n,0);renderTools()}
+else if(t.id==='rcAdd'){const r=rcTotals();['stone','cobblestone','redstone','quartz','iron_ingot'].forEach(id=>addPcs(id,r[id]||0));render()}});
+add('glowstone_dust','Glowstone Dust','ฝุ่นโกลว์สโตน','#e8c35a','ทุบบล็อกโกลว์สโตนในเนเธอร์ (ได้ 2-4 ชิ้นต่อก้อน)','utility');
+add('iron_nugget','Iron Nugget','ก้อนเหล็กเล็ก','#c9c9c9','คราฟต์: เหล็กแท่ง 1 ได้ 9 ชิ้น','utility');
+add('torch','Torch','คบไฟ','#d9a441','คราฟต์: ถ่านหิน 1 + แท่งไม้ 1 ได้ 4 อัน','decor');
+add('stick','Stick','แท่งไม้','#8a6a3a','คราฟต์: แผ่นไม้ 2 แผ่น ได้ 4 อัน','utility');
+add('amethyst_shard','Amethyst Shard','เศษอเมทิสต์','#a98be0','ทุบกลุ่มอเมทิสต์ (Amethyst Cluster) ใน Geode','utility');
+const X={torch:[['stick',.25]],lantern:[['torch',1]],chain:[['iron_nugget',2]],tinted_glass:[['amethyst_shard',2]]};
+Object.assign(R,{glowstone:['glowstone_dust',4,0],iron_nugget:['iron_ingot',1/9,0],torch:['coal',.25,0],lantern:['iron_nugget',8,0],chain:['iron_ingot',1,0],tinted_glass:['glass',.5,0],amethyst:['amethyst_shard',4,0]});
+const BT=id=>{const m=id.match(/^(.*)_(stairs|slab|wall|fence)$/);if(!m)return id==='glass_pane'?'glass':'';let b=m[1];if(b==='deepslate_brick'||b==='deepslate_tile'||b==='stone_brick')b+='s';else if(['oak','spruce','dark_oak'].includes(b))b+='_planks';return b};
+function timeHtml(en,days){const rate=Math.max(1,parseFloat(S.rate)||40),pcs=en.reduce((s,[,n])=>s+n,0),mins=Math.ceil(pcs/rate),perDay=Math.ceil(mins/days);
+const f=m=>m>=60?Math.floor(m/60)+' ชม. '+(m%60)+' นาที':m+' นาที';
+return `<div style="margin-top:6px">เวลาขุดโดยประมาณ (ที่ ${rate} ชิ้น/นาที): รวม <b>${f(mins)}</b> วันละ <b>${f(perDay)}</b>${perDay>=60?` · พักสายตาและดื่มน้ำทุก 1 ชั่วโมง (วันละราว ${Math.floor(perDay/60)} ครั้ง)`:''}</div><div class="mu" style="font-size:12px">ยังไม่รวมเวลาเดิน เผา และคราฟต์ ค่าความเร็วเริ่มต้นเป็นแค่ตัวเลขสมมติ ให้แก้เป็นของคุณเอง</div>`}
+$('#rate').addEventListener('change',e=>{S.rate=Math.min(10000,Math.max(1,parseFloat(e.target.value)||40));render()});
+function renderPal(){const el=$('#pal'),tot=S.items.reduce((s,it)=>s+qty(it),0);if(!tot){el.hidden=true;return}el.hidden=false;
+const L=S.items.map(it=>({d:info(it.id),n:qty(it)})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n);
+$('#palBar').innerHTML=L.map(x=>`<i style="flex:${x.n};background:${x.d[3]}" title="${x.d[1]}"></i>`).join('');
+$('#palTxt').textContent='สัดส่วนโทนสีตามจำนวนชิ้น: '+L.slice(0,3).map(x=>`${x.d[1]} ${Math.round(x.n/tot*100)}%`).join(', ')+(L.length>3?' ...':'')}
+let cat='all';
+const CATS=[['all','ทั้งหมด'],['building','บล็อกหลัก'],['stairs_slabs','บันได/แผ่นครึ่งก้อน'],['decor','ไฟและตกแต่ง'],['utility','เรดสโตน/จิปาถะ']];
+document.addEventListener('click',e=>{const t=e.target.closest('[data-cat]');if(t){cat=t.dataset.cat;renderPick()}});
+function renderPick(){
+  const q=$("#q").value.trim().toLowerCase();
+  $('#tabs').innerHTML=CATS.map(c=>`<button role="tab" data-cat="${c[0]}" aria-selected="${c[0]===cat}" class="${c[0]===cat?'on':''}">${c[1]}</button>`).join('');
+  const r=DB.filter(d=>(cat==='all'||d[6]===cat)&&(!q||(d[1]+d[2]).toLowerCase().includes(q)));
+  $("#pick").innerHTML=r.map(d=>`<span class="pw"><button data-add="${d[0]}">${ico(d)}<b>${d[1]}</b> <small style="opacity:.7">(${d[2]})</small></button>${d[0].startsWith('custom_')?`<button class="dc" data-delcust="${d[0]}" title="ลบไอเท็มนี้ออกจากคลัง" aria-label="ลบ ${d[1]}">✕</button>`:''}</span>`).join("")||'<span class="mu">ไม่พบไอเท็ม</span>';
+}
+function render(){
+  let all=0,dn=0,slots=0;
+  $("#list").innerHTML=S.items.length?S.items.map((it,i)=>{
+    const d=info(it.id),n=qty(it);all+=n;if(it.done)dn+=n;slots+=Math.ceil(n/d[4]);
+    if(M.hideDone&&it.done)return '';return `<div class="row${it.done?" dn":""}">
+<input type="checkbox" data-done="${i}" aria-label="ติ๊กว่าเก็บครบ" ${it.done?"checked":""}>
+<div class="nm">${ico(d)} <b>${d[1]}</b> <small style="display:inline;opacity:.7">(${d[2]})</small></div>
+<div class="ctl"><label>สแต็ก<input type="number" min="0" data-s="${i}" value="${it.stacks}"></label>
+<label>+ชิ้น<input type="number" min="0" max="${d[4]-1}" data-e="${i}" value="${it.extra}"></label>
+<span class="t">= ${n.toLocaleString()} ชิ้น</span>
+<button data-how="${i}">วิธีหา</button>${altBtn(it,i)}<button data-del="${i}" aria-label="ลบ">ลบ</button></div>
+${it.open?`<div class="how">${d[5]}${yHint(it.id)}</div>`:""}${altPanel(it,i)}</div>`}).join(""):'<p class="mu" style="margin:0">ยังไม่มีไอเท็ม กดเลือกจากช่องด้านบนเพื่อเริ่มเพิ่มลงลิสต์</p>';
+  if(S.items.length&&M.hideDone&&S.items.every(x=>x.done))$('#list').innerHTML='<p class="mu" style="margin:0">รายการทั้งหมดเก็บครบแล้วและถูกซ่อนอยู่ กดปุ่มด้านล่างเพื่อแสดง</p>';
+  const nd=S.items.filter(x=>x.done).length,hb=$('#hideDone');
+  hb.textContent=M.hideDone?`แสดงรายการที่เก็บครบแล้ว (${nd})`:`ซ่อนรายการที่เก็บครบแล้ว${nd?` (${nd})`:''}`;
+  hb.setAttribute('aria-pressed',String(!!M.hideDone));hb.disabled=!nd&&!M.hideDone;
+  const pc=all?Math.round(dn/all*100):0;
+  $("#pb").style.width=pc+"%";
+  $("#sum").innerHTML=`<span>เก็บแล้ว ${pc}%</span><span>รวม ${all.toLocaleString()} ชิ้น</span><span>ราว ${slots} สแต็ก</span><span>≈ ${(slots/54).toFixed(2)} Double Chest</span>`;
+  $('#cap').textContent=slots?(slots>36?`ระวัง: ของที่ต้องขนมี ${slots} ช่อง เกินกระเป๋า 36 ช่อง ต้องเดิน ${Math.ceil(slots/36)} รอบ หรือพก Shulker Box ${Math.ceil(slots/27)} ใบ (ยังไม่หักช่องเครื่องมือ)`:`ขนทั้งหมด ${slots} ช่อง พกรอบเดียวได้ (กระเป๋า 36 ช่อง)`):'';
+  renderTree();renderExtra();renderPal();
+  save();
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;
+  const D=t.dataset;
+  if(D.add){const x=S.items.find(i=>i.id===D.add);x?x.stacks++:S.items.push({id:D.add,stacks:1,extra:0,done:false});render()}
+  else if(D.del!==undefined){S.items.splice(+D.del,1);render()}
+  else if(D.how!==undefined){S.items[+D.how].open=!S.items[+D.how].open;render()}
+  else if(t.id==="hideDone"){M.hideDone=!M.hideDone;render()}
+  else if(t.id==="clr"){S.items=S.items.filter(i=>!i.done);render()}
+  else if(t.id==="copy"){
+    const txt=S.name+"\n"+S.items.map(it=>(it.done?"[x] ":"[ ] ")+info(it.id)[1]+" – "+fmt(qty(it),info(it.id)[4])).join("\n");
+    navigator.clipboard.writeText(txt).then(()=>{t.textContent="คัดลอกแล้ว"},()=>{t.textContent="คัดลอกไม่ได้ ลองกดค้างที่ข้อความ"});
+  }
+});
+document.addEventListener("change",e=>{
+  const D=e.target.dataset;
+  if(D.done!==undefined){S.items[+D.done].done=e.target.checked;render()}
+  else if(D.s!==undefined){S.items[+D.s].stacks=Math.max(0,parseInt(e.target.value)||0);render()}
+  else if(D.e!==undefined){const it=S.items[+D.e];it.extra=Math.min(info(it.id)[4]-1,Math.max(0,parseInt(e.target.value)||0));render()}
+});
+$("#q").addEventListener("input",renderPick);
+$("#name").value=S.name;
+$("#name").addEventListener("input",e=>{S.name=e.target.value;save();renderProj()});
+function renderProj(){$('#sel').innerHTML=M.projects.map(p=>`<option value="${p.id}"${p.id===S.id?' selected':''}>${(p.name||'ไม่มีชื่อ').replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';')}</option>`).join('');$('#del').disabled=M.projects.length<2}
+$('#sel').addEventListener('change',e=>{S=M.projects.find(p=>p.id===e.target.value)||S;M.cur=S.id;$('#name').value=S.name;render();renderProj()});
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+if(t.id==='new'){S={id:'p'+Date.now().toString(36),name:'โปรเจกต์ '+(M.projects.length+1),items:[]};M.projects.push(S);M.cur=S.id;$('#name').value=S.name;render();renderProj();$('#name').focus();$('#name').select()}
+else if(t.id==='del'){if(M.projects.length<2)return;if(!t.dataset.arm){t.dataset.arm=1;t.textContent='กดอีกครั้งเพื่อยืนยันลบ';setTimeout(()=>{delete t.dataset.arm;t.textContent='ลบโปรเจกต์'},3000);return}
+M.projects=M.projects.filter(p=>p!==S);S=M.projects[0];M.cur=S.id;delete t.dataset.arm;t.textContent='ลบโปรเจกต์';$('#name').value=S.name;render();renderProj()}});
+let customDB=[];
+try{customDB=JSON.parse(localStorage.getItem('mcl_custom_db')||'[]');customDB.forEach(i=>{if(!info(i[0]))DB.push(i)})}catch(e){customDB=[]}
+const cf=$('#customForm'),cm=$('#custMsg');
+let custIconData='';
+$('#custFile').addEventListener('change',e=>{const f=e.target.files[0];custIconData='';if(!f)return;
+if(!/^image\//.test(f.type)){cm.textContent='เลือกได้เฉพาะไฟล์รูปภาพ';return}
+const rd=new FileReader();rd.onload=ev=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d');x.imageSmoothingEnabled=false;const s=Math.min(32/im.width,32/im.height),w=Math.max(1,Math.round(im.width*s)),h=Math.max(1,Math.round(im.height*s));x.drawImage(im,(32-w)>>1,(32-h)>>1,w,h);try{custIconData=c.toDataURL('image/png');cm.textContent='ย่อรูปเป็น 32×32 แล้ว'}catch(err){cm.textContent='อ่านรูปไม่ได้ ลองใช้ URL แทน'}};im.onerror=()=>{cm.textContent='อ่านรูปไม่สำเร็จ'};im.src=ev.target.result};rd.readAsDataURL(f)});
+$('#btnCustom').addEventListener('click',()=>{cf.hidden=!cf.hidden;cm.textContent='';if(!cf.hidden)$('#custEn').focus()});
+$('#btnCancelCustom').addEventListener('click',()=>{cf.hidden=true});
+$('#btnSaveCustom').addEventListener('click',()=>{
+const en=cl($('#custEn').value.trim()),th=cl($('#custTh').value.trim())||en;
+if(!en){cm.textContent='กรุณากรอกชื่อภาษาอังกฤษอย่างน้อย 1 ชื่อ';return}
+const slug=en.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+const id='custom_'+(slug||Date.now().toString(36));
+if(info(id)||DB.some(d=>d[1].toLowerCase()===en.toLowerCase())){cm.textContent='ไอเท็มชื่อนี้มีอยู่แล้วในระบบ ลองค้นหาในช่องด้านบน';return}
+const rawU=$('#custIcon').value.trim(),icon=custIconData||safeIcon(rawU);
+if(rawU&&!custIconData&&!icon){cm.textContent='URL รูปต้องขึ้นต้นด้วย https:// และห้ามมีช่องว่าง';return}
+const it=[id,en,th,'#9a82ff',parseInt($('#custStack').value)||64,'ไอเท็ม Custom ที่ผู้ใช้สร้างเอง',$('#custCat').value,icon];
+DB.push(it);customDB.push(it);
+try{localStorage.setItem('mcl_custom_db',JSON.stringify(customDB))}catch(e){}
+S.items.push({id,stacks:1,extra:0,done:false});
+$('#custEn').value='';$('#custTh').value='';$('#custIcon').value='';$('#custFile').value='';custIconData='';cm.textContent='';cf.hidden=true;
+renderPick();render()});
+const ioMsg=t=>{$('#ioMsg').textContent=t};
+function loadData(txt){try{const d=JSON.parse(txt);if(!d||!Array.isArray(d.projects)||!d.projects.length)throw 0;
+(Array.isArray(d.custom)?d.custom:[]).forEach(i=>{if(Array.isArray(i)&&i.length>=7&&/^custom_[a-z0-9_]+$/.test(String(i[0]))&&!info(i[0])){const n=[i[0],cl(i[1]),cl(i[2]),/^#[0-9a-f]{3,8}$/i.test(i[3])?i[3]:'#9a82ff',[1,16,64].includes(+i[4])?+i[4]:64,'ไอเท็ม Custom ที่ผู้ใช้สร้างเอง',CATS.some(c=>c[0]===i[6]&&c[0]!=='all')?i[6]:'building',safeIcon(i[7])];DB.push(n);customDB.push(n)}});
+try{localStorage.setItem('mcl_custom_db',JSON.stringify(customDB))}catch(e){}
+d.projects.forEach((p,n)=>{p.id=String(p.id||'p'+Date.now().toString(36)+n);p.name=String(p.name||'โปรเจกต์ '+(n+1));p.items=(Array.isArray(p.items)?p.items:[]).filter(it=>it&&info(it.id)).map(it=>({id:it.id,stacks:Math.max(0,parseInt(it.stacks)||0),extra:Math.min(info(it.id)[4]-1,Math.max(0,parseInt(it.extra)||0)),done:!!it.done}))});
+M={cur:d.cur,projects:d.projects,flags:d.flags&&typeof d.flags==='object'?{nether:!!d.flags.nether,iron:!!d.flags.iron}:{}};S=M.projects.find(p=>p.id===M.cur)||M.projects[0];M.cur=S.id;
+$('#name').value=S.name;save();renderPick();render();renderProj();ioMsg('นำเข้าแล้ว '+M.projects.length+' โปรเจกต์')}catch(e){ioMsg('อ่านข้อมูลไม่สำเร็จ ต้องเป็น JSON ที่ส่งออกจากหน้านี้')}}
+$('#exp').addEventListener('click',()=>{const str=JSON.stringify({...M,custom:customDB},null,2);$('#ioText').value=str;$('#ioBox').hidden=false;
+$('#ioText').focus();$('#ioText').select();
+ioMsg('คัดลอกข้อความในกล่องด้านล่างไปเก็บไว้ (วางในโน้ตหรือบันทึกเป็นไฟล์ .json) แล้ววางกลับในกล่องนี้ กด "นำเข้าจากข้อความนี้" เมื่อต้องการใช้บนเครื่องอื่น')});
+$('#imp').addEventListener('click',()=>$('#impFile').click());
+$('#impFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=ev=>loadData(ev.target.result);rd.readAsText(f);e.target.value=''});
+$('#ioApply').addEventListener('click',()=>loadData($('#ioText').value));
+$('#ioClose').addEventListener('click',()=>{$('#ioBox').hidden=true});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-delcust]');if(!t)return;
+if(!t.dataset.arm){t.dataset.arm=1;t.textContent='ลบ?';setTimeout(()=>{if(t.isConnected){delete t.dataset.arm;t.textContent='✕'}},3000);return}
+const id=t.dataset.delcust,ix=DB.findIndex(d=>d[0]===id);if(ix>-1)DB.splice(ix,1);
+customDB=customDB.filter(c=>c[0]!==id);try{localStorage.setItem('mcl_custom_db',JSON.stringify(customDB))}catch(err){}
+M.projects.forEach(p=>{p.items=p.items.filter(it=>it.id!==id)});save();renderPick();render()});
+renderPick();render();renderProj();
+</script>
+</body>
+</html>
+
+</body></html>
